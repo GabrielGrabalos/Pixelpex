@@ -1,0 +1,206 @@
+@font-face {
+    font-family: 'Pixeled';
+    src: url('./assets/Pixeled.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Pixeled', 'courier new', courier, monospace;
+}
+
+#loading {
+    width: 100%;
+    height: 101vh;
+    background: linear-gradient(135deg, #ffdcbf, #ffd6b5, #ffad6a);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+#loading img {
+    height: 10vh;
+    image-rendering: pixelated;
+    filter: drop-shadow(0px 1vw 7px rgba(117, 53, 0, 0.2));
+}
+
+#loading-gif,
+#disconnected-box img {
+    display: block;
+    animation: floating 1s infinite ease-in-out;
+}
+
+#animated-logo {
+    display: none;
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+        filter: drop-shadow(0px 1vw 7px rgba(117, 53, 0, 0.2));
+    }
+
+    50% {
+        transform: translateY(-1vh);
+        filter: drop-shadow(0px 2vw 7px rgba(117, 53, 0, 0.2));
+    }
+
+    100% {
+        transform: translateY(0);
+        filter: drop-shadow(0px 1vw 7px rgba(117, 53, 0, 0.2));
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#color-picker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8vh;
+    height: 8vh;
+    margin: 1vh;
+
+    border: none;
+    filter: drop-shadow(0px 0.5vw 5px rgba(117, 53, 0, 0.2));
+
+    /* make it go under the loading div */
+    z-index: 999;
+}
+
+#disconnected {
+    width: 100%;
+    height: 101vh;
+
+    background: rgba(117, 53, 0, 0.2);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+#disconnected-box {
+    height: 70%;
+    aspect-ratio: 1/1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    background-color: #fff6f9;
+
+    border: 4px solid rgb(0, 0, 0);
+
+    filter: drop-shadow(0px 1vw 10px rgba(117, 53, 0, 0.3));
+
+    text-transform: uppercase;
+
+    padding: 2vh;
+
+    user-select: none;
+}
+
+#disconnected-box img {
+    width: 40%;
+    image-rendering: pixelated;
+
+    filter: drop-shadow(0px 1vw 10px rgba(117, 53, 0, 0.3));
+}
+
+#disconnected-box p {
+    font-size: 2vh;
+    text-align: center;
+}
+
+#disconnected-box button {
+    width: 50%;
+    height: 10%;
+    font-size: 2vh;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#disconnected-box button:hover {
+    animation: floating 1s infinite ease-in-out;
+    filter: drop-shadow(0px 2vw 10px rgba(117, 53, 0, 0.3));
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-0.5vh);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#logout{
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 1vh;
+    padding: 0 2vh;
+
+    border: 2px solid black;
+    background-color: #fff6f9;
+    box-shadow: 0px 0.5vw 5px rgba(117, 53, 0, 0.2);
+
+    font-size: 2vh;
+
+    /* make it go under the loading div */
+    z-index: 999;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+#logout:hover {
+    animation: floating 1s infinite ease-in-out;
+    filter: drop-shadow(0px 1vw 5px rgba(117, 53, 0, 0.2));
+}

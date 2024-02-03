@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixelpex</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="loading">
+        <img src="./assets/loading.gif" alt="Loading..." id="loading-gif" />
+        <img src="./assets/animated-logo.gif" alt="animated-logo" id="animated-logo" />
+    </div>
+
+    <div id="disconnected">
+        <div id="disconnected-box">
+            <img src="./assets/error.png" alt="Disconnected..." id="disconnected-img" />
+            <p>Você foi desconectade por inatividade.</p>
+            <button onclick="reconnect()">Reconectar</button>
+        </div>
+    </div>
+
+    <script src="loading.js"></script>
+    
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="socket.js"></script>
+    
+    <input type="color" id="color-picker" value="#000000" />
+    <canvas id="canvas"></canvas>
+    
+    <script src="panzoom.js"></script>
+    <script src="timer.js"></script>
+    <script src="canvas.js"></script>
+
+</body>
+
+</html>
