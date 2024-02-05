@@ -45,7 +45,7 @@
 }
 
 @keyframes floating {
-    0% {
+    0%, 100% {
         transform: translateY(0);
         filter: drop-shadow(0px 1vw 7px rgba(117, 53, 0, 0.2));
     }
@@ -53,11 +53,6 @@
     50% {
         transform: translateY(-1vh);
         filter: drop-shadow(0px 2vw 7px rgba(117, 53, 0, 0.2));
-    }
-
-    100% {
-        transform: translateY(0);
-        filter: drop-shadow(0px 1vw 7px rgba(117, 53, 0, 0.2));
     }
 }
 
@@ -203,4 +198,115 @@
 #logout:hover {
     animation: floating 1s infinite ease-in-out;
     filter: drop-shadow(0px 1vw 5px rgba(117, 53, 0, 0.2));
+}
+
+#controls-container{
+    height: 60vh;
+
+    position: fixed;
+    /* left: -61vh; */
+    bottom: 0;
+    margin: 1vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    /* make it go under the loading div */
+    z-index: 999;
+
+    transition: left 0.5s ease-out;
+}
+
+#controls-tutorial {
+    height: 100%;
+    aspect-ratio: 1/1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: #fff6f9;
+
+    border: 4px solid black;
+
+    font-size: 2vh;
+    text-transform: uppercase;
+
+    box-shadow: 0px 0.5vw 5px rgba(117, 53, 0, 0.5);
+}
+
+.carrousel {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4vh;
+
+    position: relative;
+    overflow: visible;
+}
+
+.slide{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img{
+    width: 100%;
+    image-rendering: pixelated;
+    margin: 2vh;
+    border: 2px solid black;
+}
+
+#right-arrow-slider, #left-arrow-slider{
+    position: absolute;
+    width: 6vh;
+    margin: 2vh;
+    margin-top: -2vh;
+    image-rendering: pixelated;
+
+    filter: drop-shadow(0px 0.5vw 2px rgba(117, 53, 0, 0.3));
+
+    cursor: pointer;
+}
+
+#right-arrow-slider{
+    right: 0;
+    transform: rotate(180deg);
+    margin-right: -3vh;
+}
+
+#left-arrow-slider{
+    display: none;
+    left: 0;
+    margin-left: -3vh;
+}
+
+#arrow-container{
+    width: 5vh;
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff6f9;
+    
+    border: 4px solid black;
+    border-left: 4px #fff6f9;
+    margin-left: -4px;
+
+    cursor: pointer;
+}
+
+#arrow-container img{
+    width: 60%;
+    image-rendering: pixelated;
+    transform: rotate(180deg);
+    transition: transform 0.3s 0.4s ease-in-out;
 }

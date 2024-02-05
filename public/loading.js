@@ -54,3 +54,31 @@ function reconnect() {
     // refresh the page
     location.reload();
 }
+
+let isControlsOpen = false;
+
+function closeControls(){
+    const controls = document.getElementById("controls-container");
+    controls.style.left = "-61vh";
+
+    const arrow = document.getElementById("arrow");
+    arrow.style.transform = "rotate(180deg)";
+}
+
+function openControls(){
+    const controls = document.getElementById("controls-container");
+    controls.style.left = "0";
+
+    const arrow = document.getElementById("arrow");
+    arrow.style.transform = "rotate(0deg)";
+}
+
+function openCloseControls(){
+    if(isControlsOpen){
+        closeControls();
+    } else {
+        openControls();
+    }
+
+    isControlsOpen = !isControlsOpen;
+}

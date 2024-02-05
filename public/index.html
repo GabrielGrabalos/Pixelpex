@@ -17,19 +17,36 @@
     <div id="disconnected">
         <div id="disconnected-box">
             <img src="./assets/error.png" alt="Disconnected..." id="disconnected-img" />
-            <p>Você foi desconectade por inatividade.</p>
-            <button onclick="reconnect()">Reconectar</button>
+            <p>You've been disconnected from the server because of inactivity.</p>
+            <button onclick="reconnect()">Reconnect</button>
+        </div>
+    </div>
+
+    <div id="controls-container">
+        <div id="controls-tutorial">
+            <h2>Controls</h2>
+            <section class="carrousel">
+                <div class="slide">
+                    <img src="./assets/controls/click.gif" alt="Click" />
+                    <p>left click to draw a pixel</p>
+                </div>
+                <img src="./assets/arrow-bg.png" alt="Right arrow" id="right-arrow-slider" />
+                <img src="./assets/arrow-bg.png" alt="Left arrow" id="left-arrow-slider" />
+            </section>
+        </div>
+        <div id="arrow-container" onclick="openCloseControls()">
+            <img src="./assets/arrow.png" alt="Arrow" id="arrow" />
         </div>
     </div>
 
     <script src="loading.js"></script>
-    
+
     <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
     <script src="socket.js"></script>
-    
+
     <input type="color" id="color-picker" value="#000000" />
     <canvas id="canvas"></canvas>
-    
+
     <script src="panzoom.js"></script>
     <script src="timer.js"></script>
     <script src="canvas.js"></script>
