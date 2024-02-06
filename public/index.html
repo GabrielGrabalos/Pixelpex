@@ -25,14 +25,27 @@
     <div id="controls-container">
         <div id="controls-tutorial">
             <h2>Controls</h2>
-            <section class="carrousel">
-                <div class="slide">
-                    <img src="./assets/controls/click.gif" alt="Click" />
-                    <p>left click to draw a pixel</p>
-                </div>
+            <div class="carrousel-container">
+                <section class="carrousel">
+                    <div class="slide">
+                        <img src="./assets/controls/click.gif" alt="Click" />
+                        <p>left click to draw a pixel</p>
+                    </div>
+                    <div class="slide">
+                        <img src="./assets/controls/shift-click.gif" alt="Scroll" />
+                        <p>shift + left click to draw continuously</p>
+                    </div>
+                </section>
                 <img src="./assets/arrow-bg.png" alt="Right arrow" id="right-arrow-slider" />
                 <img src="./assets/arrow-bg.png" alt="Left arrow" id="left-arrow-slider" />
-            </section>
+                <div class="slide-dots">
+                    <span class="dot" onclick="currentSlide(1)" id="active-dot"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                </div>
+            </div>
         </div>
         <div id="arrow-container" onclick="openCloseControls()">
             <img src="./assets/arrow.png" alt="Arrow" id="arrow" />

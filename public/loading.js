@@ -57,7 +57,7 @@ function reconnect() {
 
 let isControlsOpen = false;
 
-function closeControls(){
+function closeControls() {
     const controls = document.getElementById("controls-container");
     controls.style.left = "-61vh";
 
@@ -65,7 +65,7 @@ function closeControls(){
     arrow.style.transform = "rotate(180deg)";
 }
 
-function openControls(){
+function openControls() {
     const controls = document.getElementById("controls-container");
     controls.style.left = "0";
 
@@ -73,12 +73,48 @@ function openControls(){
     arrow.style.transform = "rotate(0deg)";
 }
 
-function openCloseControls(){
-    if(isControlsOpen){
+function openCloseControls() {
+    if (isControlsOpen) {
         closeControls();
     } else {
         openControls();
     }
 
     isControlsOpen = !isControlsOpen;
+}
+
+let currentSlideIndex = 0;
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+
+    currentSlideIndex = slideIndex;
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function nextSlide() {
+    showSlides(currentSlideIndex + 1);
+}
+
+function previousSlide() {
+    showSlides(currentSlideIndex - 1);
 }
