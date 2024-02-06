@@ -206,7 +206,7 @@
     height: 60vh;
 
     position: fixed;
-    /* left: -61vh; */
+    left: -61vh;
     bottom: 0;
     margin: 1vh;
 
@@ -239,23 +239,30 @@
     box-shadow: 0px 0.5vw 5px rgba(117, 53, 0, 0.5);
 }
 
+.controls-slider {
+    position: relative;
+    overflow: visible;
+}
+
 .carrousel-container {
-    width: 80%;
+    width: 48vh;
 
     display: flex;
     align-items: center;
     position: relative;
-    overflow: visible;
-    margin-bottom: 4vh;
+    overflow: hidden;
 }
 
 .carrousel {
-    min-width: 80vh;
+    min-width: fit-content;
     display: flex;
+    transition: transform 0.5s;
+    transform: translateX(0);
+    margin: 0;
 }
 
 .slide {
-    width: calc(100% / 2 + 1vh);
+    width: 48vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -269,6 +276,11 @@
     border: 2px solid black;
 }
 
+.slide p{
+    font-size: 1.35vh;
+    text-align: center;
+}
+
 #right-arrow-slider,
 #left-arrow-slider {
     position: absolute;
@@ -280,17 +292,20 @@
     filter: drop-shadow(0px 0.5vw 2px rgba(117, 53, 0, 0.3));
 
     cursor: pointer;
+
+    top: 50%;
 }
 
 #right-arrow-slider {
     right: 0;
-    transform: rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
     margin-right: -3vh;
 }
 
 #left-arrow-slider {
     left: 0;
     margin-left: -3vh;
+    transform: translateY(-50%);
 }
 
 #arrow-container {
@@ -322,7 +337,7 @@
 
     position: absolute;
 
-    bottom: 8vh;
+    top: -2vh;
 
     display: flex;
     justify-content: center;
@@ -339,6 +354,6 @@
     transition: width 0.3s;
 }
 
-#active-dot {
+.dot.active {
     width: 2vh;
 }

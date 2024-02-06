@@ -25,21 +25,40 @@
     <div id="controls-container">
         <div id="controls-tutorial">
             <h2>Controls</h2>
-            <div class="carrousel-container">
-                <section class="carrousel">
-                    <div class="slide">
-                        <img src="./assets/controls/click.gif" alt="Click" />
-                        <p>left click to draw a pixel</p>
-                    </div>
-                    <div class="slide">
-                        <img src="./assets/controls/shift-click.gif" alt="Scroll" />
-                        <p>shift + left click to draw continuously</p>
-                    </div>
-                </section>
-                <img src="./assets/arrow-bg.png" alt="Right arrow" id="right-arrow-slider" />
-                <img src="./assets/arrow-bg.png" alt="Left arrow" id="left-arrow-slider" />
+            <div class="controls-slider">
+                <div class="carrousel-container">
+                    <section class="carrousel">
+                        <div class="slide">
+                            <img src="./assets/controls/click.gif" alt="Click" />
+                            <p>left click to draw a pixel</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/controls/shift-click.gif" alt="Draw continuosly" />
+                            <p>shift + left click to draw continuously</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/controls/ctrl-click.gif" alt="Erase" />
+                            <p>ctrl + left click to erase</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/controls/color-picker.gif" alt="Color picker" />
+                            <p>right click to copy a color</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/controls/shift-click-color.gif" alt="Shift demo" />
+                            <p>shift doesn't overwrite pixels</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/controls/ctrl-shift.gif" alt="Ctrl demo" />
+                            <p>ctrl + shift overwrites pixels</p>
+                        </div>
+                    </section>
+                </div>
+                <img src="./assets/arrow-bg.png" alt="Right arrow" id="right-arrow-slider" onclick="nextSlide()"/>
+                <img src="./assets/arrow-bg.png" alt="Left arrow" id="left-arrow-slider" onclick="previousSlide()"/>
                 <div class="slide-dots">
-                    <span class="dot" onclick="currentSlide(1)" id="active-dot"></span>
+                    <span class="dot active" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
                     <span class="dot" onclick="currentSlide(2)"></span>
                     <span class="dot" onclick="currentSlide(3)"></span>
                     <span class="dot" onclick="currentSlide(4)"></span>

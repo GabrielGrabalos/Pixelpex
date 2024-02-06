@@ -86,29 +86,31 @@ function openCloseControls() {
 let currentSlideIndex = 0;
 
 function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
+    const slides = document.getElementsByClassName("slide");
 
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
-
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+    if (n > slides.length - 1) {
+        currentSlideIndex = 0;
+    } else if (n < 0) {
+        currentSlideIndex = slides.length - 1;
+    } else {
+        currentSlideIndex = n;
     }
 
-    for (i = 0; i < dots.length; i++) {
+    const carrousel = document.getElementsByClassName("carrousel")[0];
+
+    carrousel.style.transform = `translateX(-${currentSlideIndex * 48}vh)`;
+
+    const dots = document.getElementsByClassName("dot");
+
+    for (let i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
 
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-
-    currentSlideIndex = slideIndex;
+    dots[currentSlideIndex].className += " active";
 }
 
 function currentSlide(n) {
-    showSlides(slideIndex = n);
+    showSlides(n);
 }
 
 function nextSlide() {
