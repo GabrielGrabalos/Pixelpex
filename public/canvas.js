@@ -314,7 +314,7 @@ function deletePixelsToBeDeleted() {
         if (!pixels[x])
             continue;
 
-        const pixelsX = pixels[x];
+        const pixelsX = pixelsToBeDeleted[x];
 
         for (let y in pixelsX) {
             delete pixels[x][y];
