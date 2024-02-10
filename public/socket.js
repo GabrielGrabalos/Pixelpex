@@ -2,7 +2,7 @@ let socket = null;
 
 let pixelsLoaded = false;
 
-function connectSocket(){
+function connectSocket() {
     socket = io("https://pixelpex-api.glitch.me");
 
     socket.on("connect", () => {
@@ -17,11 +17,11 @@ function connectSocket(){
     });
 
     socket.on("add_pixels", (pixelsToAdd) => {
-        for (let x in pixelsToAdd){
+        for (let x in pixelsToAdd) {
             if (!pixels[x])
                 pixels[x] = {};
 
-            for (let y in pixelsToAdd[x]){
+            for (let y in pixelsToAdd[x]) {
                 pixels[x][y] = pixelsToAdd[x][y];
             }
         }
@@ -30,11 +30,11 @@ function connectSocket(){
     });
 
     socket.on("delete_pixels", (pixelsToDelete) => {
-        for (let x in pixelsToDelete){
+        for (let x in pixelsToDelete) {
             if (!pixels[x])
                 continue;
 
-            for (let y in pixelsToDelete[x]){
+            for (let y in pixelsToDelete[x]) {
                 delete pixels[x][y];
 
                 if (Object.keys(pixels[x]).length === 0)
@@ -50,19 +50,29 @@ function connectSocket(){
     });
 }
 
-function getPixels(){
+function getPixels() {
     socket.emit("get_pixels");
 
     socket.on("get_pixels", (pixelsToAdd) => {
         pixels = pixelsToAdd;
         draw();
 
-        setInterval(() => {
-            if (pixelsLoaded){
+        // Waits at least 4 seconds before hiding the intro
+        // If the pixels are still being loaded, it will keep
+        // checking every 300ms until the pixels are loaded.
+        setTimeout(() => {
+            if (pixelsLoaded) {
                 hideIntro();
                 return;
             }
-        }, 600);
+
+            setInterval(() => {
+                if (pixelsLoaded) {
+                    hideIntro();
+                    return;
+                }
+            }, 300);
+        }, 4000);
 
         pixelsLoaded = true;
     });
