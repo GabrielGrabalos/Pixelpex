@@ -218,6 +218,8 @@
     z-index: 999;
 
     transition: left 0.5s ease-out;
+
+    user-select: none;
 }
 
 #controls-tutorial {
@@ -279,6 +281,7 @@
 .slide p{
     font-size: 1.35vh;
     text-align: center;
+    user-select: all;
 }
 
 #right-arrow-slider,

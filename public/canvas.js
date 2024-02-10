@@ -13,38 +13,51 @@ const ctx = canvas.getContext('2d', { alpha: false });
 let canvasWidth = canvas.width = window.innerWidth;
 let canvasHeight = canvas.height = window.innerHeight;
 
+// Create an offscreen canvas
+const offscreenCanvas = document.createElement('canvas');
+offscreenCanvas.width = canvasWidth;
+offscreenCanvas.height = canvasHeight;
+const offscreenCtx = offscreenCanvas.getContext('2d', { alpha: false });
+
+// Disable anti-aliasing
+ctx.imageSmoothingEnabled = false;
+
+// Disable anti-aliasing
+offscreenCtx.imageSmoothingEnabled = false;
+
 const colorPicker = document.getElementById('color-picker');
 
 configCanvas();
 
 function draw() {
-    clear();
     drawBackground();
     drawGrid();
     drawPixels();
+
+    ctx.drawImage(offscreenCanvas, 0, 0);
 }
 
 function drawBackground() {
-    ctx.fillStyle = "#fff6f9";
-    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+    offscreenCtx.fillStyle = "#fff6f9";
+    offscreenCtx.fillRect(0, 0, canvasWidth, canvasHeight);
 }
 
 function drawLine(x1, y1, x2, y2) {
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
+    offscreenCtx.beginPath();
+    offscreenCtx.moveTo(x1, y1);
+    offscreenCtx.lineTo(x2, y2);
+    offscreenCtx.stroke();
 }
 
 function drawGrid() {
     if (pz.Scale >= 1) {
-        ctx.lineWidth = pz.Scale;
+        offscreenCtx.lineWidth = pz.Scale;
     }
     else {
-        ctx.lineWidth = pz.Scale ** 2;
+        offscreenCtx.lineWidth = pz.Scale ** 2;
     }
 
-    if(ctx.lineWidth < 0.05)
+    if (offscreenCtx.lineWidth < 0.05)
         return;
 
     for (let i = -pz.OffsetX % pixelSize * pz.Scale; i < canvasWidth; i += pixelSize * pz.Scale) {
@@ -56,63 +69,51 @@ function drawGrid() {
     }
 }
 
-const numWorkers = 4;
-
 function drawPixels() {
-
-    // starts the for loop with the first cell on the screen:
     const xStart = Math.floor(pz.OffsetX / pixelSize);
     const yStart = Math.floor(pz.OffsetY / pixelSize);
-
-    // ends the for loop with the last cell on the screen:
     const xEnd = Math.ceil(pz.ScreenToWorldX(canvasWidth) / pixelSize);
     const yEnd = Math.ceil(pz.ScreenToWorldY(canvasHeight) / pixelSize);
-
     const pixelSizeScaled = pixelSize * pz.Scale;
 
+    const screenX = pz.WorldToScreenX(xStart * pixelSize);
+    const screenY = pz.WorldToScreenY(yStart * pixelSize);
+
     for (let x = xStart; x < xEnd; x++) {
-        if (!pixels[x])
-            continue;
+        const pixelsX = pixels[x];
+        if (!pixelsX) continue;
 
         for (let y = yStart; y < yEnd; y++) {
-            if (!pixels[x][y] || (pixelsToBeDeleted[x] && pixelsToBeDeleted[x][y]))
-                continue;
+            const pixel = pixelsX[y];
+            if (!pixel || (pixelsToBeDeleted[x] && pixelsToBeDeleted[x][y])) continue;
 
-            if (typeof pixels[x][y] !== "string") {
-                ctx.fillStyle = "#000000";
-            }
-            else {
-                ctx.fillStyle = pixels[x][y];
-            }
+            offscreenCtx.fillStyle = typeof pixel === "string" ? pixel : "#000000";
 
-            const addRight = pixels[x + 1] && pixels[x + 1][y] ? 1 : 0;
-            const addBottom = pixels[x][y + 1] ? 1 : 0;
-
-            ctx.fillRect(
-                pz.WorldToScreenX(x * pixelSize),
-                pz.WorldToScreenY(y * pixelSize),
-                pixelSizeScaled + addRight,
-                pixelSizeScaled + addBottom
+            offscreenCtx.fillRect(
+                screenX + (x - xStart) * pixelSizeScaled,
+                screenY + (y - yStart) * pixelSizeScaled,
+                pixelSizeScaled,
+                pixelSizeScaled
             );
         }
     }
 
     for (let x in pixelsToBeAdded) {
-        for (let y in pixelsToBeAdded[x]) {
-            ctx.fillStyle = pixelsToBeAdded[x][y];
+        const pixelsToBeAddedX = pixelsToBeAdded[x];
 
-            ctx.fillRect(
-                pz.WorldToScreenX(x * pixelSize),
+        const worldToScreenX = pz.WorldToScreenX(x * pixelSize);
+
+        for (let y in pixelsToBeAddedX) {
+            offscreenCtx.fillStyle = pixelsToBeAddedX[y];
+
+            offscreenCtx.fillRect(
+                worldToScreenX,
                 pz.WorldToScreenY(y * pixelSize),
                 pixelSizeScaled,
                 pixelSizeScaled
             );
         }
     }
-}
-
-function clear() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function configCanvas() {
@@ -123,7 +124,7 @@ function configCanvas() {
 
     canvas.addEventListener('mouseup', (e) => {
         resetIdleTimer();
-        
+
         pz.MouseUp();
 
         if (pz.Click)
@@ -145,7 +146,7 @@ function configCanvas() {
         if (Object.keys(pixelsToBeDeleted).length > 0) {
             deletePixelsToBeDeleted();
         }
-        
+
         if (Object.keys(pixelsToBeAdded).length > 0) {
             addPixelsToBeAdded();
         }
@@ -168,7 +169,7 @@ function configCanvas() {
 
         let lock = false;
 
-        if(e.ctrlKey && e.shiftKey){
+        if (e.ctrlKey && e.shiftKey) {
             addPixel(x, y, color);
             lock = true;
         }
@@ -193,6 +194,11 @@ function configCanvas() {
     canvas.addEventListener('click', mouseClick);
 
     canvas.addEventListener('wheel', (e) => {
+
+        if (e.ctrlKey) {
+            e.preventDefault();
+        }
+
         pz.MouseWheel(e.clientX, e.clientY, e.deltaY);
         draw();
     });
@@ -211,10 +217,33 @@ function configCanvas() {
     });
 
     window.onresize = () => {
-        canvasWidth = canvas.width = window.innerWidth;
-        canvasHeight = canvas.height = window.innerHeight;
+        canvasWidth = offscreenCanvas.width = canvas.width = window.innerWidth;
+        canvasHeight = offscreenCanvas.height = canvas.height = window.innerHeight;
+
+        ctx.imageSmoothingEnabled = false;
+        offscreenCtx.imageSmoothingEnabled = false;
         draw();
     };
+
+    window.addEventListener('keydown', (e) => {
+        // if ctrl + q is pressed:
+        if (e.ctrlKey && e.key === "q") {
+            if (saving)
+                return;
+            sendSaveRequest();
+
+            return;
+        }
+
+        // if alt + shift + q is pressed:
+        if (e.altKey && e.shiftKey && e.key === "Q") {
+            if (saving)
+                return;
+            sendSaveRequest(true);
+
+            return;
+        }
+    });
 }
 
 function mouseClick(e) {
@@ -235,7 +264,7 @@ function mouseClick(e) {
     else {
         addPixel(x, y, color);
     }
-    
+
     if (Object.keys(pixelsToBeDeleted).length > 0) {
         deletePixelsToBeDeleted();
     }
@@ -267,11 +296,10 @@ function addPixelsToBeAdded() {
     socket.emit("add_pixels", pixelsToBeAdded);
 
     for (let x in pixelsToBeAdded) {
-        if (!pixels[x])
-            pixels[x] = {};
+        const pixelsToBeAddedX = pixelsToBeAdded[x];
 
-        for (let y in pixelsToBeAdded[x]) {
-            pixels[x][y] = pixelsToBeAdded[x][y];
+        for (let y in pixelsToBeAddedX) {
+            pixels[x][y] = pixelsToBeAddedX[y];
         }
     }
 
@@ -286,10 +314,12 @@ function deletePixelsToBeDeleted() {
         if (!pixels[x])
             continue;
 
-        for (let y in pixelsToBeDeleted[x]) {
+        const pixelsX = pixels[x];
+
+        for (let y in pixelsX) {
             delete pixels[x][y];
         }
-        
+
         if (Object.keys(pixels[x]).length === 0)
             delete pixels[x];
     }
