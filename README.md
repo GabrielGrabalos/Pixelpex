@@ -1,10 +1,10 @@
 # Pixelpex
 
-Pixelpex is an exciting multiplayer game that lets you unleash your creativity by collaboratively crafting pixel art on an infinite canvas. With its intuitive interface and endless possibilities, Pixelpex promises hours of fun and artistic exploration for players of all skill levels.
+Pixelpex is an exciting multiplayer game that lets you unleash your creativity by collaboratively crafting pixel art on an **infinite canvas!!!** With its intuitive interface and endless possibilities, Pixelpex promises hours of fun and artistic exploration for players of all skill levels.
 
 ## Getting Started
 
-You can dive into the world of Pixelpex right away by visiting our [website](https://thepixelpex.web.app). Join other artists from around the globe in shaping the ever-expanding canvas of pixel art.
+You can dive into the world of [Pixelpex](https://thepixelpex.web.app) right away!</br> Join other artists from around the globe in shaping the ever-expanding canvas of pixel art.
 
 ## Features
 
@@ -15,7 +15,7 @@ You can dive into the world of Pixelpex right away by visiting our [website](htt
 
 ## Roadmap
 
-While Pixelpex is already a captivating experience, we're constantly working on adding new features and enhancements to make it even better. Here are some of the exciting updates you can look forward to in the future:
+While Pixelpex is already a captivating experience, I'm constantly working on adding new features and enhancements to make it even better. Here are some of the exciting updates you can look forward to in the future:
 
 - **Advanced Drawing Tools**: Stay tuned for additional tools and functionalities to take your pixel art to the next level.
 - **Better rendering system**: A better optimized drawing system to support wild amounts of pixels!
