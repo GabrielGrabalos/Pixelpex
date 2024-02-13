@@ -27,3 +27,16 @@ While Pixelpex is already a captivating experience, I'm constantly working on ad
 ## Contributing
 
 We welcome contributions from developers and artists alike! If you have ideas for new features, encounter any issues, or simply want to get involved, please don't hesitate to reach out or submit a pull request.
+
+## Legal Disclaimer
+
+**Please Read Carefully**
+
+Pixelpex is a platform designed for collaborative pixel art creation. While we strive to provide a safe and enjoyable environment for all users, it's important to note that the content displayed on the canvas is entirely user-generated and does not reflect the views or opinions of the Pixelpex development team.
+
+By accessing and using Pixelpex, you acknowledge and agree that:
+
+- **User Responsibility**: Users are solely responsible for the content they create and share on the platform. The Pixelpex development team does not endorse, support, or oppose any specific drawings or messages displayed on the canvas.
+- **No Endorsement**: The presence of any particular drawing or message on the canvas does not imply endorsement or approval by the Pixelpex development team.
+- **Content Monitoring**: While we implement measures to maintain a positive and inclusive community, we cannot guarantee the accuracy, integrity, or quality of user-generated content. Users are encouraged to report any inappropriate or offensive content for review.
+- **Limitation of Liability**: The Pixelpex development team shall not be held liable for any damages, losses, or disputes arising from the use of the platform or reliance on user-generated content.
