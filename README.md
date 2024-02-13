@@ -19,9 +19,9 @@ While Pixelpex is already a captivating experience, I'm constantly working on ad
 
 - **Advanced Drawing Tools**: Stay tuned for additional tools and functionalities to take your pixel art to the next level.
 - **Better rendering system**: A better optimized drawing system to support wild amounts of pixels!
-- **Map separation by chunks**: Separate the map by chunks to better optimize data transfering.
+- **Map separation by chunks**: Separate the map by chunks to better optimize data transferring.
 - **Room system**: A system to allow the players to create their own rooms with only their friends to build their own infinite pixel art canvas to call home!
-- **Anti-vandalism algorithm**: An algorithm to detect when a bad player is trying to vandalize the canvas.
+- **Anti-tampering algorithm**: An algorithm to detect when a user attempts to tamper with or disrupt the canvas.
 - **Drawing protection**: Protect drawings from other users if a bad player tries to damage it.
 
 ## Contributing
