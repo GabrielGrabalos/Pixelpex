@@ -17,8 +17,7 @@ You can dive into the world of [Pixelpex](https://thepixelpex.web.app) right awa
 
 While Pixelpex is already a captivating experience, I'm constantly working on adding new features and enhancements to make it even better. Here are some of the exciting updates you can look forward to in the future:
 
-- **Advanced Drawing Tools**: Stay tuned for additional tools and functionalities to take your pixel art to the next level.
-- **Better rendering system**: A better optimized drawing system to support wild amounts of pixels!
+- **Better rendering system**: A better optimized drawing system to support wild amounts of pixels! (Currently under development).
 - **Map separation by chunks**: Separate the map by chunks to better optimize data transferring.
 - **Room system**: A system to allow the players to create their own rooms with only their friends to build their own infinite pixel art canvas to call home!
 - **Anti-tampering algorithm**: An algorithm to detect when a user attempts to tamper with or disrupt the canvas.
