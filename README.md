@@ -2,18 +2,18 @@
 
 Pixelpex is an exciting multiplayer game that lets you unleash your creativity by collaboratively crafting pixel art on an **infinite canvas!!!** With its intuitive interface and endless possibilities, Pixelpex promises hours of fun and artistic exploration for players of all skill levels. 🌟
 
-## Getting Started 🚀
+## 🚀 Getting Started
 
 You can dive into the world of [Pixelpex](https://thepixelpex.web.app) right away!</br> Join other artists from around the globe in shaping the ever-expanding canvas of pixel art. 🌍
 
-## Features ✨
+## ✨ Features
 
 - **Multiplayer Collaboration**: Join forces with friends or fellow artists to create stunning pixel art together. 👫
 - **Infinite Canvas**: Let your imagination run wild on a limitless canvas, where the only boundaries are the ones you create. 🌈
 - **Intuitive Tools**: Pixelpex provides a range of easy-to-use tools for drawing, erasing, and editing pixel art, ensuring a seamless creative experience. 🎨
 - **Real-time Updates (Sockets)**: Witness the magic of collaboration in real-time as changes made by you and other players are instantly reflected on the canvas. 🔄
 
-## Roadmap 🛣️
+## 🛣️ Roadmap
 
 While Pixelpex is already a captivating experience, I'm constantly working on adding new features and enhancements to make it even better. Here are some of the exciting updates you can look forward to in the future:
 
@@ -23,11 +23,11 @@ While Pixelpex is already a captivating experience, I'm constantly working on ad
 - **Anti-tampering algorithm**: An algorithm to detect when a user attempts to tamper with or disrupt the canvas. 🔒
 - **Drawing protection**: Protect drawings from other users if a bad player tries to damage it. 🛡️
 
-## Contributing 🤝
+## 🤝 Contributing
 
 We welcome contributions from developers and artists alike! If you have ideas for new features, encounter any issues, or simply want to get involved, please don't hesitate to reach out or submit a pull request. 🙌
 
-## Legal Disclaimer ⚖️
+## ⚖️ Legal Disclaimer
 
 **Please Read Carefully**
 
