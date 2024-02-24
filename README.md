@@ -39,3 +39,7 @@ By accessing and using Pixelpex, you acknowledge and agree that:
 - **No Endorsement**: The presence of any particular drawing or message on the canvas does not imply endorsement or approval by the Pixelpex development team. ❌
 - **Content Monitoring**: While we implement measures to maintain a positive and inclusive community, we cannot guarantee the accuracy, integrity, or quality of user-generated content. Users are encouraged to report any inappropriate or offensive content for review. 🚨
 - **Limitation of Liability**: The Pixelpex development team shall not be held liable for any damages, losses, or disputes arising from the use of the platform or reliance on user-generated content. ⚠️
+
+# 😔 Sad News
+
+This project is currently on hold, but is soon to be update more and more!
